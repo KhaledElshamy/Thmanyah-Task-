@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct Thmanyah_TaskApp: App {
     let persistenceController = PersistenceController.shared
-
+    @StateObject private var diContainer = AppDIContainer()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            diContainer.makeHomeView()
+                .environmentObject(diContainer)
+                .preferredColorScheme(.dark)
         }
     }
 }

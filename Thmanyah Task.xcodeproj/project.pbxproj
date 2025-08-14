@@ -29,22 +29,9 @@
 		05CAC4302E4DF41F001540F6 /* Thmanyah TaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thmanyah TaskUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		05FCE1672E4E1042004E2605 /* Exceptions for "Thmanyah Task" folder in "Thmanyah Task" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Thmanyah-Task-Info.plist",
-			);
-			target = 05CAC4102E4DF41E001540F6 /* Thmanyah Task */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		05CAC4132E4DF41E001540F6 /* Thmanyah Task */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				05FCE1672E4E1042004E2605 /* Exceptions for "Thmanyah Task" folder in "Thmanyah Task" target */,
-			);
 			path = "Thmanyah Task";
 			sourceTree = "<group>";
 		};

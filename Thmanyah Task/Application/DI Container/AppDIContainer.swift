@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class AppDIContainer {
+final class AppDIContainer: ObservableObject {
     
     lazy var appConfiguration = AppConfiguration()
     
@@ -28,4 +28,10 @@ final class AppDIContainer {
         let searchDataNetwork = DefaultNetworkService(config: config)
         return DefaultDataTransferService(with: searchDataNetwork)
     }()
+    
+    @MainActor
+    func makeHomeView() -> HomeView {
+        let dependencies = HomeScenesDIContainer.Dependencies(apiDataTransferService: homeApiDataTransferService)
+        return HomeScenesDIContainer(dependencies: dependencies).makeHomeView()
+    }
 }
