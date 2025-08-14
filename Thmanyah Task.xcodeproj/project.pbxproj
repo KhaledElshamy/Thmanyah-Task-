@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		05CAC4272E4DF41F001540F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05CAC4092E4DF41E001540F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05CAC4102E4DF41E001540F6;
+			remoteInfo = "Thmanyah Task";
+		};
+		05CAC4312E4DF41F001540F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05CAC4092E4DF41E001540F6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05CAC4102E4DF41E001540F6;
+			remoteInfo = "Thmanyah Task";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05CAC4112E4DF41E001540F6 /* Thmanyah Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thmanyah Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05CAC4262E4DF41F001540F6 /* Thmanyah TaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thmanyah TaskTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05CAC4302E4DF41F001540F6 /* Thmanyah TaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thmanyah TaskUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		05FCE1672E4E1042004E2605 /* Exceptions for "Thmanyah Task" folder in "Thmanyah Task" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Thmanyah-Task-Info.plist",
+			);
+			target = 05CAC4102E4DF41E001540F6 /* Thmanyah Task */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		05CAC4132E4DF41E001540F6 /* Thmanyah Task */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				05FCE1672E4E1042004E2605 /* Exceptions for "Thmanyah Task" folder in "Thmanyah Task" target */,
+			);
+			path = "Thmanyah Task";
+			sourceTree = "<group>";
+		};
+		05CAC4292E4DF41F001540F6 /* Thmanyah TaskTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Thmanyah TaskTests";
+			sourceTree = "<group>";
+		};
+		05CAC4332E4DF41F001540F6 /* Thmanyah TaskUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Thmanyah TaskUITests";
+			sourceTree = "<group>";
+		};
+		05FCE1642E4E0F56004E2605 /* Configurations */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		05CAC40E2E4DF41E001540F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05CAC4232E4DF41F001540F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05CAC42D2E4DF41F001540F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05CAC4082E4DF41E001540F6 = {
+			isa = PBXGroup;
+			children = (
+				05FCE1642E4E0F56004E2605 /* Configurations */,
+				05CAC4132E4DF41E001540F6 /* Thmanyah Task */,
+				05CAC4292E4DF41F001540F6 /* Thmanyah TaskTests */,
+				05CAC4332E4DF41F001540F6 /* Thmanyah TaskUITests */,
+				05CAC4122E4DF41E001540F6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		05CAC4122E4DF41E001540F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05CAC4112E4DF41E001540F6 /* Thmanyah Task.app */,
+				05CAC4262E4DF41F001540F6 /* Thmanyah TaskTests.xctest */,
+				05CAC4302E4DF41F001540F6 /* Thmanyah TaskUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		05CAC4102E4DF41E001540F6 /* Thmanyah Task */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05CAC43A2E4DF41F001540F6 /* Build configuration list for PBXNativeTarget "Thmanyah Task" */;
+			buildPhases = (
+				05CAC40D2E4DF41E001540F6 /* Sources */,
+				05CAC40E2E4DF41E001540F6 /* Frameworks */,
+				05CAC40F2E4DF41E001540F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				05CAC4132E4DF41E001540F6 /* Thmanyah Task */,
+				05FCE1642E4E0F56004E2605 /* Configurations */,
+			);
+			name = "Thmanyah Task";
+			packageProductDependencies = (
+			);
+			productName = "Thmanyah Task";
+			productReference = 05CAC4112E4DF41E001540F6 /* Thmanyah Task.app */;
+			productType = "com.apple.product-type.application";
+		};
+		05CAC4252E4DF41F001540F6 /* Thmanyah TaskTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05CAC43D2E4DF41F001540F6 /* Build configuration list for PBXNativeTarget "Thmanyah TaskTests" */;
+			buildPhases = (
+				05CAC4222E4DF41F001540F6 /* Sources */,
+				05CAC4232E4DF41F001540F6 /* Frameworks */,
+				05CAC4242E4DF41F001540F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05CAC4282E4DF41F001540F6 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				05CAC4292E4DF41F001540F6 /* Thmanyah TaskTests */,
+			);
+			name = "Thmanyah TaskTests";
+			packageProductDependencies = (
+			);
+			productName = "Thmanyah TaskTests";
+			productReference = 05CAC4262E4DF41F001540F6 /* Thmanyah TaskTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		05CAC42F2E4DF41F001540F6 /* Thmanyah TaskUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05CAC4402E4DF41F001540F6 /* Build configuration list for PBXNativeTarget "Thmanyah TaskUITests" */;
+			buildPhases = (
+				05CAC42C2E4DF41F001540F6 /* Sources */,
+				05CAC42D2E4DF41F001540F6 /* Frameworks */,
+				05CAC42E2E4DF41F001540F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05CAC4322E4DF41F001540F6 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				05CAC4332E4DF41F001540F6 /* Thmanyah TaskUITests */,
+			);
+			name = "Thmanyah TaskUITests";
+			packageProductDependencies = (
+			);
+			productName = "Thmanyah TaskUITests";
+			productReference = 05CAC4302E4DF41F001540F6 /* Thmanyah TaskUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05CAC4092E4DF41E001540F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					05CAC4102E4DF41E001540F6 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					05CAC4252E4DF41F001540F6 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 05CAC4102E4DF41E001540F6;
+					};
+					05CAC42F2E4DF41F001540F6 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 05CAC4102E4DF41E001540F6;
+					};
+				};
+			};
+			buildConfigurationList = 05CAC40C2E4DF41E001540F6 /* Build configuration list for PBXProject "Thmanyah Task" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 05CAC4082E4DF41E001540F6;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 05CAC4122E4DF41E001540F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				05CAC4102E4DF41E001540F6 /* Thmanyah Task */,
+				05CAC4252E4DF41F001540F6 /* Thmanyah TaskTests */,
+				05CAC42F2E4DF41F001540F6 /* Thmanyah TaskUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		05CAC40F2E4DF41E001540F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05CAC4242E4DF41F001540F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05CAC42E2E4DF41F001540F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		05CAC40D2E4DF41E001540F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05CAC4222E4DF41F001540F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05CAC42C2E4DF41F001540F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05CAC4282E4DF41F001540F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05CAC4102E4DF41E001540F6 /* Thmanyah Task */;
+			targetProxy = 05CAC4272E4DF41F001540F6 /* PBXContainerItemProxy */;
+		};
+		05CAC4322E4DF41F001540F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05CAC4102E4DF41E001540F6 /* Thmanyah Task */;
+			targetProxy = 05CAC4312E4DF41F001540F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		05CAC4382E4DF41F001540F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 05FCE1642E4E0F56004E2605 /* Configurations */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		05CAC4392E4DF41F001540F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 05FCE1642E4E0F56004E2605 /* Configurations */;
+			baseConfigurationReferenceRelativePath = Development.xcconfig;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		05CAC43B2E4DF41F001540F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Thmanyah Task/Preview Content\"";
+				DEVELOPMENT_TEAM = 82H8UAFS37;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Thmanyah-Task-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "KhaledElshamy.Thmanyah-Task";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		05CAC43C2E4DF41F001540F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Thmanyah Task/Preview Content\"";
+				DEVELOPMENT_TEAM = 82H8UAFS37;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Thmanyah-Task-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "KhaledElshamy.Thmanyah-Task";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		05CAC43E2E4DF41F001540F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8QPFBNADD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "KhaledElshamy.Thmanyah-TaskTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thmanyah Task.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Thmanyah Task";
+			};
+			name = Debug;
+		};
+		05CAC43F2E4DF41F001540F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8QPFBNADD;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "KhaledElshamy.Thmanyah-TaskTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thmanyah Task.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Thmanyah Task";
+			};
+			name = Release;
+		};
+		05CAC4412E4DF41F001540F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8QPFBNADD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "KhaledElshamy.Thmanyah-TaskUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Thmanyah Task";
+			};
+			name = Debug;
+		};
+		05CAC4422E4DF41F001540F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8QPFBNADD;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "KhaledElshamy.Thmanyah-TaskUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Thmanyah Task";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		05CAC40C2E4DF41E001540F6 /* Build configuration list for PBXProject "Thmanyah Task" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05CAC4382E4DF41F001540F6 /* Debug */,
+				05CAC4392E4DF41F001540F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05CAC43A2E4DF41F001540F6 /* Build configuration list for PBXNativeTarget "Thmanyah Task" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05CAC43B2E4DF41F001540F6 /* Debug */,
+				05CAC43C2E4DF41F001540F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05CAC43D2E4DF41F001540F6 /* Build configuration list for PBXNativeTarget "Thmanyah TaskTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05CAC43E2E4DF41F001540F6 /* Debug */,
+				05CAC43F2E4DF41F001540F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05CAC4402E4DF41F001540F6 /* Build configuration list for PBXNativeTarget "Thmanyah TaskUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05CAC4412E4DF41F001540F6 /* Debug */,
+				05CAC4422E4DF41F001540F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 05CAC4092E4DF41E001540F6 /* Project object */;
+}

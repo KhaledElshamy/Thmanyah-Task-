@@ -1,0 +1,10 @@
+//
+// Development.xcconfig
+//
+// created by Khaled Elshamy on 14/08/2025
+
+// Home Base URL 
+HOME_BASE_URL = https://api-v2-b2sit6oh3a-uc.a.run.app/home_sections
+
+// Search base URL 
+SEARCH_BASE_URL = https://mock.apidog.com/m1/735111-711675-default/search
