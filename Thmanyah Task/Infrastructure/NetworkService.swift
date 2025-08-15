@@ -15,23 +15,12 @@ enum NetworkError: Error {
     case urlGeneration
 }
 
-protocol NetworkCancellable {
-    func cancel()
-}
-
-extension URLSessionTask: NetworkCancellable { }
-
 protocol NetworkService {
-    typealias CompletionHandler = (Result<Data?, NetworkError>) -> Void
-    
-    func request(endpoint: Requestable, completion: @escaping CompletionHandler) -> NetworkCancellable?
+    func request(endpoint: Requestable) async throws -> Data?
 }
 
 protocol NetworkSessionManager {
-    typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
-    
-    func request(_ request: URLRequest,
-                 completion: @escaping CompletionHandler) -> NetworkCancellable
+    func request(_ request: URLRequest) async throws -> (Data, URLResponse)
 }
 
 protocol NetworkErrorLogger {
@@ -58,35 +47,34 @@ final class DefaultNetworkService {
         self.logger = logger
     }
     
-    private func request(
-        request: URLRequest,
-        completion: @escaping CompletionHandler
-    ) -> NetworkCancellable {
-        
-        let sessionDataTask = sessionManager.request(request) { data, response, requestError in
-            
-            if let requestError = requestError {
-                var error: NetworkError
-                if let response = response as? HTTPURLResponse {
-                    error = .error(statusCode: response.statusCode, data: data)
-                } else {
-                    error = self.resolve(error: requestError)
-                }
-                
-                self.logger.log(error: error)
-                completion(.failure(error))
-            } else {
-                self.logger.log(responseData: data, response: response)
-                completion(.success(data))
-            }
-        }
-    
+    private func request(request: URLRequest) async throws -> Data? {
         logger.log(request: request)
-
-        return sessionDataTask
+        
+        do {
+            let (data, response) = try await sessionManager.request(request)
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode >= 400 {
+                    let error = NetworkError.error(statusCode: httpResponse.statusCode, data: data)
+                    logger.log(error: error)
+                    throw error
+                }
+            }
+            
+            logger.log(responseData: data, response: response)
+            return data
+        } catch {
+            let networkError = resolve(error: error)
+            logger.log(error: networkError)
+            throw networkError
+        }
     }
     
     private func resolve(error: Error) -> NetworkError {
+        if let networkError = error as? NetworkError {
+            return networkError
+        }
+        
         let code = URLError.Code(rawValue: (error as NSError).code)
         switch code {
         case .notConnectedToInternet: return .notConnected
@@ -98,16 +86,12 @@ final class DefaultNetworkService {
 
 extension DefaultNetworkService: NetworkService {
     
-    func request(
-        endpoint: Requestable,
-        completion: @escaping CompletionHandler
-    ) -> NetworkCancellable? {
+    func request(endpoint: Requestable) async throws -> Data? {
         do {
             let urlRequest = try endpoint.urlRequest(with: config)
-            return request(request: urlRequest, completion: completion)
+            return try await request(request: urlRequest)
         } catch {
-            completion(.failure(.urlGeneration))
-            return nil
+            throw NetworkError.urlGeneration
         }
     }
 }
@@ -118,13 +102,8 @@ extension DefaultNetworkService: NetworkService {
 // And it can be injected into NetworkService instead of default one.
 
 final class DefaultNetworkSessionManager: NetworkSessionManager {
-    func request(
-        _ request: URLRequest,
-        completion: @escaping CompletionHandler
-    ) -> NetworkCancellable {
-        let task = URLSession.shared.dataTask(with: request, completionHandler: completion)
-        task.resume()
-        return task
+    func request(_ request: URLRequest) async throws -> (Data, URLResponse) {
+        return try await URLSession.shared.data(for: request)
     }
 }
 
