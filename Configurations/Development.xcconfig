@@ -3,8 +3,13 @@
 //
 // created by Khaled Elshamy on 14/08/2025
 
+
+// App Settings 
+APP_NAME = Thmanyah Task
+APP_BUNDLE_ID = KhaledElshamy.Thmanyah-Task
+
 // Home Base URL 
-HOME_BASE_URL = https://api-v2-b2sit6oh3a-uc.a.run.app
+HOME_BASE_URL = api-v2-b2sit6oh3a-uc.a.run.app
 
 // Search base URL 
-SEARCH_BASE_URL = https://mock.apidog.com
+SEARCH_BASE_URL = mock.apidog.com

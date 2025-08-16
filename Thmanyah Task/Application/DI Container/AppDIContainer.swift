@@ -14,7 +14,7 @@ final class AppDIContainer: ObservableObject {
     // MARK: - Network
     lazy var homeApiDataTransferService: DataTransferService = {
         let config = ApiDataNetworkConfig(
-            baseURL: URL(string: appConfiguration.homeBaseURL)!
+            baseURL: URL(string: "https://" + appConfiguration.homeBaseURL)!
         )
         
         let homeApiDataNetwork = DefaultNetworkService(config: config)
@@ -23,7 +23,7 @@ final class AppDIContainer: ObservableObject {
     
     lazy var searchDataTransferService: DataTransferService = {
         let config = ApiDataNetworkConfig(
-            baseURL: URL(string: appConfiguration.searchBaseURL)!
+            baseURL: URL(string: "https://" + appConfiguration.searchBaseURL)!
         )
         let searchDataNetwork = DefaultNetworkService(config: config)
         return DefaultDataTransferService(with: searchDataNetwork)

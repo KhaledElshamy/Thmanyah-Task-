@@ -26,6 +26,18 @@ final class HomeScenesDIContainer {
     
     @MainActor
     func makeHomeViewModel() -> HomeViewModel {
-        return HomeViewModel()
+        return HomeViewModel(homeUseCase: makeHomeUseCase())
+    }
+    
+    // MARK: - Use Cases
+    @MainActor
+    private func makeHomeUseCase() -> HomeUseCaseProtocol {
+        return HomeUseCase(repository: makeHomeRepository())
+    }
+    
+    // MARK: - Repository
+    @MainActor
+    private func makeHomeRepository() -> HomeRepositoryProtocol {
+        return HomeRepository(service: dependencies.apiDataTransferService)
     }
 }

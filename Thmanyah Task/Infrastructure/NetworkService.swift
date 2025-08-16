@@ -19,6 +19,10 @@ protocol NetworkService {
     func request(endpoint: Requestable) async throws -> Data?
 }
 
+protocol NetworkCancellable {
+    func cancel()
+}
+
 protocol NetworkSessionManager {
     func request(_ request: URLRequest) async throws -> (Data, URLResponse)
 }

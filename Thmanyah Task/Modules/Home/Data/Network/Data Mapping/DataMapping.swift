@@ -10,7 +10,7 @@ import Foundation
 // Mapping to Domain
 extension HomeResponseDTO {
     func toDomain() -> HomeResponse {
-        return .init(sections: sections?.compactMap { $0.toDomain() } ?? [],
+        return .init(sections: sections?.compactMap { $0.toDomain() },
                      pagination: pagination?.toDomain())
     }
 }

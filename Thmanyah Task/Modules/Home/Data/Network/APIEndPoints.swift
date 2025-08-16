@@ -9,5 +9,12 @@ import Foundation
 
 struct APIEndPoints {
     
-   
+    static func getHomeList(with homeRequestDTO: HomeRequestDTO = HomeRequestDTO()) -> Endpoint<HomeResponseDTO> {
+
+        return Endpoint(
+            path: "home_sections",
+            method: .get,
+            queryParametersEncodable: homeRequestDTO
+        )
+    }
 }
