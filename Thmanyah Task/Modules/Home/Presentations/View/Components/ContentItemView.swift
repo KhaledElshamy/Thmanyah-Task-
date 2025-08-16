@@ -40,11 +40,10 @@ struct SquareContentView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } placeholder: {
+            CachedAsyncImage.withPlaceholder(
+                url: item.imageURL,
+                contentMode: .fill
+            ) {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
                     .overlay(
@@ -106,11 +105,10 @@ struct BigSquareContentView: View {
     var body: some View {
         // Image with title and episode count overlay
         ZStack(alignment: .bottomLeading) {
-            AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } placeholder: {
+            CachedAsyncImage.withPlaceholder(
+                url: item.imageURL,
+                contentMode: .fill
+            ) {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
                     .overlay(
@@ -182,11 +180,10 @@ struct TwoLinesGridContentView: View {
     var body: some View {
         HStack(spacing: 16) {
             // Left: Square thumbnail
-            AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } placeholder: {
+            CachedAsyncImage.withPlaceholder(
+                url: item.imageURL,
+                contentMode: .fill
+            ) {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
                     .overlay(
@@ -299,11 +296,10 @@ struct QueueContentView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } placeholder: {
+            CachedAsyncImage.withPlaceholder(
+                url: item.imageURL,
+                contentMode: .fill
+            ) {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
                     .overlay(

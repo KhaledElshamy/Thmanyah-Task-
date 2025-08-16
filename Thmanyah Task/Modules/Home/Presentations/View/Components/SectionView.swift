@@ -23,7 +23,7 @@ struct SectionView: View {
             case .twoLinesGrid:
                 GridSection(section: section, onItemTap: onItemTap)
             case .queue:
-                VerticalListSection(section: section, onItemTap: onItemTap)
+                QueueSectionView(section: section, onItemTap: onItemTap)
             case .unknown:
                 HorizontalScrollSection(section: section, onItemTap: onItemTap)
             }
@@ -138,11 +138,10 @@ struct TwoLinesGridItemView: View {
         Button(action: onTap) {
             HStack(alignment: .top, spacing: 12) {
                 // Left: Full height thumbnail
-                AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } placeholder: {
+                CachedAsyncImage.withPlaceholder(
+                    url: item.imageURL,
+                    contentMode: .fill
+                ) {
                     Rectangle()
                         .fill(Color.gray.opacity(0.3))
                         .overlay(
@@ -200,7 +199,7 @@ struct TwoLinesGridItemView: View {
 }
 
 // MARK: - Vertical List Section (Queue) - Carousel Slider
-struct VerticalListSection: View {
+struct QueueSectionView: View {
     let section: SectionViewModel
     let onItemTap: (ContentItemViewModel) -> Void
     
@@ -232,11 +231,10 @@ struct CarouselSliderView: View {
                         ForEach(Array(items.enumerated().reversed()), id: \.offset) { index, item in
                             HStack {
                                 ZStack(alignment: Alignment(horizontal: .leading, vertical: .bottom)) {
-                                    AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                    } placeholder: {
+                                    CachedAsyncImage.withPlaceholder(
+                                        url: item.imageURL,
+                                        contentMode: .fill
+                                    ) {
                                         Rectangle()
                                             .fill(Color.gray.opacity(0.3))
                                             .overlay(
@@ -253,6 +251,7 @@ struct CarouselSliderView: View {
                                 
                                 Spacer(minLength: 0)
                             }
+                            .padding(.leading)
                             .contentShape(Rectangle())
                             .offset(x: index < dragOffsets.count ? dragOffsets[index] : 0)
                         }

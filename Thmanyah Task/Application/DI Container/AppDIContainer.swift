@@ -11,6 +11,9 @@ final class AppDIContainer: ObservableObject {
     
     lazy var appConfiguration = AppConfiguration()
     
+    // MARK: - Image Cache
+    lazy var imageCacheService: ImageCacheServiceProtocol = ImageCacheService.shared
+    
     // MARK: - Network
     lazy var homeApiDataTransferService: DataTransferService = {
         let config = ApiDataNetworkConfig(

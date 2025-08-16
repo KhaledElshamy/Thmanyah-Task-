@@ -15,9 +15,9 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                if viewModel.loading != nil {
+                if viewModel.loading == .fullScreen {
                     LoadingView()
-                } else if !viewModel.error.isEmpty {
+                } else if !viewModel.error.isEmpty && viewModel.sections.isEmpty {
                     ErrorView(
                         title: viewModel.errorTitle,
                         message: viewModel.error,
@@ -52,18 +52,77 @@ struct HomeView: View {
     private var contentView: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                ForEach(viewModel.sortedSections) { section in
+                ForEach(viewModel.sections) { section in
                     if section.hasContent {
                         SectionView(section: section) { item in
                             viewModel.didSelectItem(item)
                         }
                     }
                 }
+                
+                // Load More Section
+                if viewModel.hasMorePages {
+                    loadMoreView
+                        .onAppear {
+                            viewModel.loadNextPage()
+                        }
+                } else if !viewModel.sections.isEmpty {
+                    endOfListView
+                }
             }
             .padding(.top, 16)
         }
         .refreshable {
-            viewModel.loadHomeSections()
+            await performRefresh()
+        }
+    }
+    
+    private var loadMoreView: some View {
+        VStack(spacing: 12) {
+            if viewModel.loading == .nextPage {
+                HStack {
+                    ProgressView()
+                        .scaleEffect(0.8)
+                    Text("جاري تحميل المزيد...")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            } else if !viewModel.error.isEmpty {
+                VStack(spacing: 8) {
+                    Text("فشل في تحميل المزيد")
+                        .font(.subheadline)
+                        .foregroundColor(.red)
+                    
+                    Button("إعادة المحاولة") {
+                        viewModel.loadNextPage()
+                    }
+                    .font(.caption)
+                    .foregroundColor(.accentColor)
+                }
+            }
+        }
+        .frame(height: 60)
+        .frame(maxWidth: .infinity)
+    }
+    
+    private var endOfListView: some View {
+        VStack {
+            Divider()
+                .padding(.horizontal)
+            
+            Text("تم تحميل جميع المحتويات")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.vertical, 16)
+        }
+    }
+    
+    @MainActor
+    private func performRefresh() async {
+        viewModel.refreshData()
+        // Wait for the refresh to complete
+        while viewModel.loading == .fullScreen {
+            try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 second
         }
     }
 }
