@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SectionViewModel: Identifiable {
+struct SectionViewModel: Identifiable, Equatable {
     let id = UUID()
     let section: HomeSections
     
@@ -33,5 +33,12 @@ struct SectionViewModel: Identifiable {
     
     var hasContent: Bool {
         return !content.isEmpty
+    }
+    
+    // MARK: - Equatable
+    static func == (lhs: SectionViewModel, rhs: SectionViewModel) -> Bool {
+        return lhs.section.name == rhs.section.name &&
+               lhs.section.order == rhs.section.order &&
+               lhs.section.type == rhs.section.type
     }
 }

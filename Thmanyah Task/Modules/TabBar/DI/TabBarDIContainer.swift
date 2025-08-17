@@ -70,15 +70,14 @@ struct PlaceholderTabView: View {
     var body: some View {
         VStack(spacing: 20) {
             Image(systemName: "hammer.fill")
-                .font(.system(size: 60))
+                .regularFont(size: .huge, scale: false)
                 .foregroundColor(.gray)
             
             Text("\(tabName) Tab")
-                .font(.title)
-                .fontWeight(.bold)
+                .boldFont(size: .title)
             
             Text("Coming Soon...")
-                .font(.subheadline)
+                .regularFont(size: .subheadline)
                 .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

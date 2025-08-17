@@ -16,14 +16,14 @@ struct MenuActionsView: View {
             Button(action: onMenuTap) {
                 Image(systemName: "line.3.horizontal")
                     .foregroundColor(.secondary)
-                    .font(.caption)
+                    .mediumFont(size: .caption)
                     .frame(width: 20, height: 20)
             }
             
             Button(action: onOptionsTap) {
                 Image(systemName: "ellipsis")
                     .foregroundColor(.secondary)
-                    .font(.title3)
+                    .mediumFont(size: .title3)
                     .frame(width: 24, height: 24)
             }
         }

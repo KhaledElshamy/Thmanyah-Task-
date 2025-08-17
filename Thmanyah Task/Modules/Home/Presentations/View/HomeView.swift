@@ -39,8 +39,7 @@ struct HomeView: View {
                         Image(systemName: "waveform")
                             .foregroundColor(.accentColor)
                         Text("Thmanyah")
-                            .font(.title2)
-                            .fontWeight(.bold)
+                            .boldFont(size: .title2)
                     }
                 }
             }
@@ -48,6 +47,7 @@ struct HomeView: View {
         .onAppear {
             viewModel.loadHomeSections()
         }
+
     }
     
     private var contentView: some View {
@@ -89,19 +89,19 @@ struct HomeView: View {
                     ProgressView()
                         .scaleEffect(0.8)
                     Text("Loading more...")
-                        .font(.subheadline)
+                        .regularFont(size: .subheadline)
                         .foregroundColor(.secondary)
                 }
             } else if !viewModel.error.isEmpty {
                 VStack(spacing: 8) {
                     Text("Failed to load more")
-                        .font(.subheadline)
+                        .mediumFont(size: .subheadline)
                         .foregroundColor(.red)
                     
                     Button("Retry") {
                         viewModel.loadNextPage()
                     }
-                    .font(.caption)
+                    .mediumFont(size: .caption)
                     .foregroundColor(.accentColor)
                 }
             }
@@ -116,7 +116,7 @@ struct HomeView: View {
                 .padding(.horizontal)
             
             Text("All content loaded")
-                .font(.caption)
+                .regularFont(size: .caption)
                 .foregroundColor(.secondary)
                 .padding(.vertical, 16)
         }
@@ -141,7 +141,7 @@ struct LoadingView: View {
             ProgressView()
                 .scaleEffect(1.5)
             Text("Loading...")
-                .font(.headline)
+                .semiBoldFont(size: .headline)
                 .foregroundColor(.secondary)
         }
     }
@@ -156,16 +156,15 @@ struct ErrorView: View {
     var body: some View {
         VStack(spacing: 20) {
             Image(systemName: "exclamationmark.triangle")
-                .font(.system(size: 60))
+                .regularFont(size: .huge, scale: false)
                 .foregroundColor(.orange)
             
             Text(title)
-                .font(.title2)
-                .fontWeight(.semibold)
+                .semiBoldFont(size: .title2)
                 .multilineTextAlignment(.center)
             
             Text(message)
-                .font(.body)
+                .regularFont(size: .body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
@@ -174,7 +173,7 @@ struct ErrorView: View {
                 retryAction()
             }
             .buttonStyle(.borderedProminent)
-            .font(.headline)
+            .semiBoldFont(size: .headline)
         }
         .padding()
     }
@@ -187,12 +186,11 @@ struct EmptyStateView: View {
     var body: some View {
         VStack(spacing: 20) {
             Image(systemName: "rectangle.stack.badge.minus")
-                .font(.system(size: 60))
+                .regularFont(size: .huge, scale: false)
                 .foregroundColor(.gray)
             
             Text(title)
-                .font(.title2)
-                .fontWeight(.semibold)
+                .semiBoldFont(size: .title2)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
         }

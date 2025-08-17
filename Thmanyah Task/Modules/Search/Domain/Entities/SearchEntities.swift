@@ -15,6 +15,7 @@ struct SearchResponse {
 
 // MARK: - Search Section
 struct SearchSection {
+    let id: String
     let name: String?
     let type: SectionType?
     let contentType: SectionContentType?

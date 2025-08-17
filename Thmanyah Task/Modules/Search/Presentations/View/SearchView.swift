@@ -61,6 +61,7 @@ struct SearchView: View {
                 viewModel.loadInitialData()
             }
         }
+
         .onDisappear {
             // View cleanup if needed
         }
@@ -82,6 +83,7 @@ struct SearchView: View {
             .padding(.horizontal)
         }
     }
+
 }
 
 // MARK: - Search Bar
@@ -95,13 +97,13 @@ struct SearchBar: View {
             // Search Icon
             Image(systemName: "magnifyingglass")
                 .foregroundColor(isSearchFocused ? .blue : .gray)
-                .font(.system(size: 16, weight: .medium))
+                .mediumFont(size: .callout)
                 .animation(.easeInOut(duration: 0.2), value: isSearchFocused)
             
             // Text Field
             TextField("Search for podcasts, books, articles...", text: $text)
                 .focused($isSearchFocused)
-                .font(.system(size: 16))
+                .regularFont(size: .callout)
                 .submitLabel(.search)
                 .onSubmit {
                     onSearchButtonClicked()
@@ -115,7 +117,7 @@ struct SearchBar: View {
                 }) {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.gray)
-                        .font(.system(size: 16))
+                        .regularFont(size: .callout)
                 }
                 .transition(.scale.combined(with: .opacity))
             }

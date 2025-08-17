@@ -14,6 +14,7 @@ struct SearchDTO: Codable {
 
 // MARK: - SearchSectionDTO
 struct SearchSectionDTO: Codable {
+    let id: String?
     let name: String?
     let type: String?
     let contentType: String?
@@ -21,7 +22,7 @@ struct SearchSectionDTO: Codable {
     let content: [SearchContentDTO]?
     
     enum CodingKeys: String, CodingKey {
-        case name, type
+        case id, name, type
         case contentType = "content_type"
         case order, content
     }

@@ -6,5 +6,16 @@
 	<string>$(HOME_BASE_URL)</string>
 	<key>SEARCH_BASE_URL</key>
 	<string>$(SEARCH_BASE_URL)</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>IBMPlexSansArabic-Bold.otf</string>
+		<string>IBMPlexSansArabic-ExtraLight.otf</string>
+		<string>IBMPlexSansArabic-Light.otf</string>
+		<string>IBMPlexSansArabic-Medium.otf</string>
+		<string>IBMPlexSansArabic-Regular.otf</string>
+		<string>IBMPlexSansArabic-SemiBold.otf</string>
+		<string>IBMPlexSansArabic-Text.otf</string>
+		<string>IBMPlexSansArabic-Thin.otf</string>
+	</array>
 </dict>
 </plist>

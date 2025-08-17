@@ -16,11 +16,11 @@ struct PlayButtonView: View {
             HStack(spacing: 4) {
                 Image(systemName: "play.fill")
                     .foregroundColor(.white)
-                    .font(.caption2)
+                    .regularFont(size: .caption2)
                 
                 if let duration = duration {
                     Text(formatDuration(duration))
-                        .font(.caption2)
+                        .regularFont(size: .caption2)
                         .foregroundColor(.white)
                         .lineLimit(1)
                         .fixedSize(horizontal: true, vertical: false)

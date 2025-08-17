@@ -21,6 +21,7 @@ extension SearchDTO {
 extension SearchSectionDTO {
     func toDomain() -> SearchSection {
         return SearchSection(
+            id: id ?? UUID().uuidString, // Generate a UUID if id is nil
             name: name,
             type: SectionType(rawValue: type ?? ""),
             contentType: SectionContentType(rawValue: contentType ?? ""),

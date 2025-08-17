@@ -65,12 +65,11 @@ struct TabItemView: View {
     var body: some View {
         VStack(spacing: 4) {
             Image(systemName: tab.symbol)
-                .font(.system(size: 20, weight: .medium))
+                .mediumFont(size: .title3)
                 .foregroundColor(isActive ? .blue : .gray)
             
             Text(tab.rawValue)
-                .font(.caption2)
-                .fontWeight(.medium)
+                .mediumFont(size: .caption2)
                 .foregroundColor(isActive ? .blue : .gray)
         }
         .frame(maxWidth: .infinity)

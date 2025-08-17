@@ -86,7 +86,7 @@ struct SearchSquareContentView: View {
             
             // Title
             Text(item.title)
-                .font(.headline)
+                .semiBoldFont(size: .headline)
                 .fontWeight(.semibold)
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
@@ -94,7 +94,7 @@ struct SearchSquareContentView: View {
             // Subtitle
             if let subtitle = item.subtitle {
                 Text(subtitle)
-                    .font(.subheadline)
+                    .mediumFont(size: .subheadline)
                     .foregroundColor(.secondary)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
@@ -148,7 +148,7 @@ struct SearchVerticalContentView: View {
             VStack(alignment: .leading, spacing: 4) {
                 // Title
                 Text(item.title)
-                    .font(.headline)
+                    .semiBoldFont(size: .headline)
                     .fontWeight(.semibold)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
@@ -156,7 +156,7 @@ struct SearchVerticalContentView: View {
                 // Subtitle
                 if let subtitle = item.subtitle {
                     Text(subtitle)
-                        .font(.subheadline)
+                        .mediumFont(size: .subheadline)
                         .foregroundColor(.secondary)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
@@ -215,7 +215,7 @@ struct SearchTwoLinesGridContentView: View {
             VStack(alignment: .leading, spacing: 4) {
                 // Title
                 Text(item.title)
-                    .font(.subheadline)
+                    .mediumFont(size: .subheadline)
                     .fontWeight(.semibold)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
@@ -223,7 +223,7 @@ struct SearchTwoLinesGridContentView: View {
                 // Subtitle
                 if let subtitle = item.subtitle {
                     Text(subtitle)
-                        .font(.caption)
+                        .regularFont(size: .caption)
                         .foregroundColor(.secondary)
                         .lineLimit(1)
                 }
@@ -281,7 +281,7 @@ struct SearchQueueContentView: View {
             VStack(alignment: .leading, spacing: 4) {
                 // Title
                 Text(item.title)
-                    .font(.subheadline)
+                    .mediumFont(size: .subheadline)
                     .fontWeight(.semibold)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
@@ -289,14 +289,14 @@ struct SearchQueueContentView: View {
                 // Episode info
                 if let episodeCount = item.episodeCount {
                     Text("\(episodeCount) episodes")
-                        .font(.caption)
+                        .regularFont(size: .caption)
                         .foregroundColor(.secondary)
                 }
                 
                 // Duration
                 if let duration = item.duration {
                     Text(formatDuration(duration))
-                        .font(.caption)
+                        .regularFont(size: .caption)
                         .foregroundColor(.secondary)
                 }
             }

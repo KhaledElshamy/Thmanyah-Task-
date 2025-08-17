@@ -40,7 +40,7 @@ struct SectionHeaderView: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(.title2)
+                .boldFont(size: .title2)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
             
@@ -148,7 +148,7 @@ struct TwoLinesGridItemView: View {
                         .overlay(
                             Image(systemName: iconForContentType())
                                 .foregroundColor(.gray)
-                                .font(.title3)
+                                .semiBoldFont(size: .title3)
                         )
                 }
                 .frame(width: 80)
@@ -159,7 +159,7 @@ struct TwoLinesGridItemView: View {
                 VStack(alignment: .leading, spacing: 6) {
                     // Title - multiline
                     Text(item.title)
-                        .font(.subheadline)
+                        .mediumFont(size: .subheadline)
                         .fontWeight(.medium)
                         .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
@@ -242,7 +242,7 @@ struct CarouselSliderView: View {
                                             .overlay(
                                                 Image(systemName: iconForContentType())
                                                     .foregroundColor(.gray)
-                                                    .font(.title2)
+                                                    .boldFont(size: .title2)
                                             )
                                     }
                                     .frame(width: calculateWidth(), height: calculateHeight(for: index))
@@ -264,7 +264,7 @@ struct CarouselSliderView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         // Title
                         Text(currentItem.title)
-                            .font(.title2)
+                            .boldFont(size: .title2)
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
                             .lineLimit(2)
@@ -274,7 +274,7 @@ struct CarouselSliderView: View {
                         HStack(spacing: 8) {
                             if let duration = currentItem.duration {
                                 Text(duration)
-                                    .font(.caption)
+                                    .mediumFont(size: .caption)
                                     .fontWeight(.medium)
                                     .foregroundColor(.secondary)
                             }
@@ -284,7 +284,7 @@ struct CarouselSliderView: View {
                             // Play button
                             Button(action: { onItemTap(currentItem) }) {
                                 Image(systemName: "play.fill")
-                                    .font(.title3)
+                                    .semiBoldFont(size: .title3)
                                     .foregroundColor(.white)
                                     .frame(width: 40, height: 40)
                                     .background(Color.blue)

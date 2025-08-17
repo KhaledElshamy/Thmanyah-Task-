@@ -50,7 +50,7 @@ struct SquareContentView: View {
                     .overlay(
                         Image(systemName: iconForContentType())
                             .foregroundColor(.gray)
-                            .font(.title2)
+                            .mediumFont(size: .title2)
                     )
             }
             .frame(width: 120, height: 120)
@@ -58,7 +58,7 @@ struct SquareContentView: View {
             .cornerRadius(8)
             
             Text(item.title)
-                .font(.caption)
+                .mediumFont(size: .caption)
                 .lineLimit(1)
                 .fontWeight(.medium)
                 .foregroundColor(.primary)
@@ -76,7 +76,7 @@ struct SquareContentView: View {
 
                 if let releaseDate = item.formattedReleaseDate {
                     Text(releaseDate)
-                        .font(.caption2)
+                        .regularFont(size: .caption2)
                         .lineLimit(1)
                         .truncationMode(.middle)
                         .foregroundColor(.primary)
@@ -116,7 +116,7 @@ struct BigSquareContentView: View {
                     .overlay(
                         Image(systemName: iconForContentType())
                             .foregroundColor(.gray)
-                            .font(.largeTitle)
+                            .boldFont(size: .largeTitle)
                     )
             }
             .frame(width: 240, height: 180)
@@ -126,7 +126,7 @@ struct BigSquareContentView: View {
             // Title and episode count overlay at bottom leading
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.title)
-                    .font(.subheadline)
+                    .mediumFont(size: .subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.leading)
@@ -134,7 +134,7 @@ struct BigSquareContentView: View {
                 
                 if let episodeCount = getEpisodeCount() {
                     Text(episodeCount)
-                        .font(.caption)
+                        .mediumFont(size: .caption)
                         .fontWeight(.medium)
                         .foregroundColor(.white)
                 }
@@ -192,7 +192,7 @@ struct TwoLinesGridContentView: View {
                     .overlay(
                         Image(systemName: iconForContentType())
                             .foregroundColor(.gray)
-                            .font(.title3)
+                            .semiBoldFont(size: .title3)
                     )
             }
             .frame(width: 60, height: 60)
@@ -202,7 +202,7 @@ struct TwoLinesGridContentView: View {
             // Middle: Content details
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.title)
-                    .font(.subheadline)
+                    .mediumFont(size: .subheadline)
                     .fontWeight(.medium)
                     .foregroundColor(.primary)
                     .lineLimit(1)
@@ -211,14 +211,14 @@ struct TwoLinesGridContentView: View {
                 HStack(spacing: 8) {
                     if let authorName = item.authorName {
                         Text(authorName)
-                            .font(.caption)
+                            .mediumFont(size: .caption)
                             .foregroundColor(.secondary)
                             .lineLimit(1)
                     }
                     
                     if let duration = item.duration {
                         Text("• \(duration)")
-                            .font(.caption)
+                            .mediumFont(size: .caption)
                             .foregroundColor(.secondary)
                     }
                 }
@@ -227,11 +227,11 @@ struct TwoLinesGridContentView: View {
                 HStack(spacing: 4) {
                     if contentType == .episode {
                         Text("5 hours ago")
-                            .font(.caption2)
+                            .regularFont(size: .caption2)
                             .foregroundColor(.secondary)
                     } else {
                         Text(contentTypeDisplayName())
-                            .font(.caption2)
+                            .regularFont(size: .caption2)
                             .foregroundColor(.secondary)
                     }
                     
@@ -249,7 +249,7 @@ struct TwoLinesGridContentView: View {
                 }) {
                     Image(systemName: "ellipsis")
                         .foregroundColor(.secondary)
-                        .font(.title3)
+                        .semiBoldFont(size: .title3)
                         .frame(width: 24, height: 24)
                 }
                 
@@ -259,7 +259,7 @@ struct TwoLinesGridContentView: View {
                 }) {
                     Image(systemName: "play.fill")
                         .foregroundColor(.white)
-                        .font(.caption)
+                        .mediumFont(size: .caption)
                         .frame(width: 32, height: 32)
                         .background(Color.blue)
                         .clipShape(Circle())
@@ -309,7 +309,7 @@ struct QueueContentView: View {
                     .overlay(
                         Image(systemName: iconForContentType())
                             .foregroundColor(.gray)
-                            .font(.title2)
+                            .mediumFont(size: .title2)
                     )
             }
             .frame(width: 60, height: 60)
@@ -320,7 +320,7 @@ struct QueueContentView: View {
                 // Title and author
                 VStack(alignment: .leading, spacing: 2) {
                     Text(item.title)
-                        .font(.subheadline)
+                        .mediumFont(size: .subheadline)
                         .fontWeight(.medium)
                         .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
@@ -328,7 +328,7 @@ struct QueueContentView: View {
                     
                     if let authorName = item.authorName {
                         Text(authorName)
-                            .font(.subheadline)
+                            .mediumFont(size: .subheadline)
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
@@ -342,7 +342,7 @@ struct QueueContentView: View {
                     
                     if let releaseDate = item.formattedReleaseDate {
                         Text(releaseDate)
-                            .font(.caption)
+                            .mediumFont(size: .caption)
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
