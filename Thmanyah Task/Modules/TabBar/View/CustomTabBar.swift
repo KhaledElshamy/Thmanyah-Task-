@@ -45,6 +45,11 @@ struct CustomTabBar: View {
                     .onTapGesture {
                         activeTab = tab
                     }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel(tab.rawValue)
+                    .accessibilityHint("Tab")
+                    .accessibilityIdentifier("\(tab.rawValue)Tab")
+                    .accessibilityAddTraits(.isButton)
             }
         }
         .padding(.horizontal, 20)
@@ -78,6 +83,7 @@ struct TabItemView: View {
             RoundedRectangle(cornerRadius: 15)
                 .fill(isActive ? Color.blue.opacity(0.1) : Color.clear)
         )
+
     }
 }
 
