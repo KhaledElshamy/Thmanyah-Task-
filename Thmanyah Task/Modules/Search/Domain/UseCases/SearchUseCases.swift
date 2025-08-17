@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Search Use Case Protocol
 protocol SearchUseCaseProtocol {
-    func search(query: String, page: Int) async throws -> SearchResponse
+    func search(query: String) async throws -> SearchResponse
 }
 
 // MARK: - Search Use Case
@@ -21,8 +21,8 @@ final class SearchUseCase: SearchUseCaseProtocol {
         self.searchRepository = searchRepository
     }
     
-    func search(query: String, page: Int = 1) async throws -> SearchResponse {
-        return try await searchRepository.search(query: query, page: page)
+    func search(query: String) async throws -> SearchResponse {
+        return try await searchRepository.search(query: query)
     }
 }
 

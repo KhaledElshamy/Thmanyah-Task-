@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SearchRepositoryProtocol {
-    func search(query: String, page: Int) async throws -> SearchResponse
+    func search(query: String) async throws -> SearchResponse
 }

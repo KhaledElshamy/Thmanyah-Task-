@@ -17,12 +17,16 @@ struct SearchView: View {
             VStack(spacing: 0) {
                 // Search Bar - Fixed at top
                 SearchBar(text: $searchText, onSearchButtonClicked: {
+                    // Perform immediate search when user presses search button
                     viewModel.search(query: searchText)
                 })
                 .padding(.horizontal)
                 .padding(.bottom, 8)
                 .background(Color(.systemBackground))
                 .zIndex(1) // Ensure search bar stays on top
+                .onChange(of: searchText) { _ in
+                    viewModel.debouncedSearch(query: searchText)
+                }
                 
                 // Content Area
                 GeometryReader { geometry in
@@ -52,13 +56,13 @@ struct SearchView: View {
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline) // Use inline to save space
         }
-        .refreshable {
-            await performRefresh()
-        }
         .onAppear {
             if viewModel.sections.isEmpty && viewModel.loading == nil {
                 viewModel.loadInitialData()
             }
+        }
+        .onDisappear {
+            // View cleanup if needed
         }
     }
     
@@ -70,57 +74,12 @@ struct SearchView: View {
                         viewModel.didSelectItem(item)
                     }
                 }
-                
-                // Load more view
-                if viewModel.canLoadMore {
-                    loadMoreView
-                } else if !viewModel.hasMorePages && !viewModel.sections.isEmpty {
-                    endOfListView
-                }
-                
+
                 // Bottom padding for tab bar
                 Color.clear
                     .frame(height: 100)
             }
             .padding(.horizontal)
-        }
-    }
-    
-    private var loadMoreView: some View {
-        VStack {
-            if viewModel.loading == .nextPage {
-                ProgressView()
-                    .scaleEffect(1.2)
-                    .padding()
-            } else {
-                Button("Load More") {
-                    viewModel.loadNextPage()
-                }
-                .padding()
-            }
-        }
-        .onAppear {
-            if viewModel.loading != .nextPage {
-                viewModel.loadNextPage()
-            }
-        }
-    }
-    
-    private var endOfListView: some View {
-        VStack {
-            Text("• • •")
-                .font(.title2)
-                .foregroundColor(.gray)
-                .padding()
-        }
-    }
-    
-    @MainActor
-    private func performRefresh() async {
-        viewModel.refreshData()
-        // Wait for the refresh to complete
-        while viewModel.loading == .fullScreen {
-            try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 second
         }
     }
 }
@@ -152,7 +111,7 @@ struct SearchBar: View {
             if !text.isEmpty {
                 Button(action: {
                     text = ""
-                    onSearchButtonClicked() // Trigger search with empty text
+                    onSearchButtonClicked() // Trigger immediate search with empty text
                 }) {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.gray)

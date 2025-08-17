@@ -15,7 +15,7 @@ final class SearchRepository: SearchRepositoryProtocol {
         self.dataTransferService = dataTransferService
     }
     
-    func search(query: String, page: Int = 1) async throws -> SearchResponse {
+    func search(query: String) async throws -> SearchResponse {
         let word = query.trimmingCharacters(in: .whitespacesAndNewlines)
         let endpoint = SearchAPIEndPoints.search(word: word.isEmpty ? nil : word)
         let searchDTO = try await dataTransferService.request(with: endpoint)

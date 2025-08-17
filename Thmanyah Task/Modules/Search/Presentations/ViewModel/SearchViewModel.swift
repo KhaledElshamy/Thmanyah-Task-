@@ -7,12 +7,12 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 protocol SearchViewModelInput {
     func search(query: String)
+    func debouncedSearch(query: String)
     func loadInitialData()
-    func loadNextPage()
-    func refreshData()
     func clearSearch()
     func didSelectItem(_ item: SearchContentItemViewModel)
     func retry()
@@ -23,8 +23,6 @@ protocol SearchViewModelOutput {
     var error: String { get }
     var sections: [SearchSectionViewModel] { get }
     var isEmpty: Bool { get }
-    var hasMorePages: Bool { get }
-    var canLoadMore: Bool { get }
     var isSearching: Bool { get }
     var searchQuery: String { get }
     var emptyDataTitle: String { get }
@@ -35,7 +33,6 @@ typealias SearchViewModelProtocol = SearchViewModelInput & SearchViewModelOutput
 
 enum SearchListViewModelLoading {
     case fullScreen
-    case nextPage
 }
 
 class SearchViewModel: SearchViewModelProtocol, ObservableObject {
@@ -47,14 +44,8 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject {
     @Published var isSearching: Bool = false
     @Published var searchQuery: String = ""
     
-    private var currentPage: Int = 0
-    private var totalPageCount: Int = 1
     private var currentSearchQuery: String = ""
-    
-    var hasMorePages: Bool { currentPage < totalPageCount }
-    var canLoadMore: Bool { hasMorePages && loading != .nextPage && !searchQuery.isEmpty }
-    
-    private var pages: [SearchResponse] = []
+    private var searchTask: Task<Void, Never>?
     
     var isEmpty: Bool {
         return sections.isEmpty && !searchQuery.isEmpty
@@ -71,6 +62,11 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject {
         self.searchUseCase = searchUseCase
     }
     
+    deinit {
+        // Cancel any pending search task when ViewModel is deallocated
+        searchTask?.cancel()
+    }
+    
     // MARK: - Input Methods
     func search(query: String) {
         let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -80,29 +76,31 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject {
         isSearching = true
         
         Task {
-            await performSearch(query: trimmedQuery, page: 1)
+            await performSearch(query: trimmedQuery)
+        }
+    }
+    
+    func debouncedSearch(query: String) {
+        // Cancel the previous search task if it exists
+        searchTask?.cancel()
+        
+        // Create a new search task with 200ms delay
+        searchTask = Task {
+            try? await Task.sleep(nanoseconds: 200_000_000) // 200 milliseconds
+            
+            // Check if the task was cancelled
+            guard !Task.isCancelled else { return }
+            
+            // Perform the search on the main actor
+            await MainActor.run {
+                search(query: query)
+            }
         }
     }
     
     func loadInitialData() {
         Task {
-            await performSearch(query: "", page: 1)
-        }
-    }
-    
-    func loadNextPage() {
-        guard canLoadMore else { return }
-        
-        Task {
-            await loadNextPageData()
-        }
-    }
-    
-    func refreshData() {
-        guard !currentSearchQuery.isEmpty else { return }
-        
-        Task {
-            await refreshAllData()
+            await performSearch(query: "")
         }
     }
     
@@ -111,9 +109,6 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject {
         currentSearchQuery = ""
         isSearching = false
         sections = []
-        pages = []
-        currentPage = 0
-        totalPageCount = 1
         error = ""
         loading = .none
     }
@@ -125,79 +120,28 @@ class SearchViewModel: SearchViewModelProtocol, ObservableObject {
     }
     
     func retry() {
-        guard !currentSearchQuery.isEmpty else { return }
-        
         Task {
-            if sections.isEmpty {
-                await performSearch(query: currentSearchQuery, page: 1)
-            } else {
-                await loadNextPageData()
-            }
+            await performSearch(query: currentSearchQuery)
         }
     }
     
     // MARK: - Private Methods
     @MainActor
-    private func performSearch(query: String, page: Int) async {
-        if page == 1 {
-            loading = .fullScreen
-            resetPages()
-        } else {
-            loading = .nextPage
-        }
-        
+    private func performSearch(query: String) async {
+        loading = .fullScreen
         error = ""
         
         do {
-            let searchResponse = try await searchUseCase.search(query: query, page: page)
-            appendPage(searchResponse)
+            let searchResponse = try await searchUseCase.search(query: query)
+            sections = (searchResponse.sections ?? []).map { SearchSectionViewModel(section: $0) }
             loading = .none
             isSearching = false
         } catch {
             loading = .none
             isSearching = false
             self.error = error.localizedDescription
-            print("Error searching for '\(query)' on page \(page): \(error)")
+            print("Error searching for '\(query)': \(error)")
         }
     }
-    
-    @MainActor
-    private func loadNextPageData() async {
-        guard canLoadMore else { return }
-        loading = .nextPage
-        error = ""
-        currentPage += 1
-        await performSearch(query: currentSearchQuery, page: currentPage)
-    }
-    
-    @MainActor
-    private func refreshAllData() async {
-        loading = .fullScreen
-        error = ""
-        resetPages()
-        await performSearch(query: currentSearchQuery, page: 1)
-    }
-    
-    private func appendPage(_ searchPage: SearchResponse) {
-        // Update pagination info
-        totalPageCount = searchPage.pagination?.totalPages ?? 1
-        
-        // Increment current page manually since we loaded a new page
-        if pages.isEmpty {
-            currentPage = 1
-            sections = (searchPage.sections ?? []).map { SearchSectionViewModel(section: $0) }
-        } else {
-            let newSectionViewModels = (searchPage.sections ?? []).map { SearchSectionViewModel(section: $0) }
-            sections.append(contentsOf: newSectionViewModels)
-        }
-        
-        // Simply append the new page
-        pages.append(searchPage)
-    }
-    
-    private func resetPages() {
-        currentPage = 0
-        pages.removeAll()
-        sections.removeAll()
-    }
+
 }
