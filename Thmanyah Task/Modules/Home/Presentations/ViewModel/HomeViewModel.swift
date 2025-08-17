@@ -41,7 +41,7 @@ class HomeViewModel: HomeViewModelProtocol, ObservableObject {
     @Published var error: String = ""
     @Published var sections: [SectionViewModel] = []
     
-    private var currentPage: Int = 0
+    private var currentPage: Int = 1
     private var totalPageCount: Int = 1
     
     var hasMorePages: Bool { currentPage < totalPageCount }

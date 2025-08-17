@@ -8,6 +8,7 @@
 import XCTest
 @testable import Thmanyah_Task
 
+@MainActor
 final class HomeUseCasesTests: XCTestCase {
     
     // MARK: - Properties
