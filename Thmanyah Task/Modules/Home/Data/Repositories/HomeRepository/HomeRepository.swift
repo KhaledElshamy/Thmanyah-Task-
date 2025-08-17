@@ -17,7 +17,7 @@ final class HomeRepository: HomeRepositoryProtocol {
     func fetchHome(page: Int) async throws -> HomeResponse {
         do {
             let requestDTO = HomeRequestDTO(page: page, limit: nil)
-            let endpoint = APIEndPoints.getHomeList(with: requestDTO)
+            let endpoint = HomeAPIEndPoints.getHomeList(with: requestDTO)
             let homeResponseDTO: HomeResponseDTO = try await service.request(with: endpoint)
             return homeResponseDTO.toDomain()
         } catch let error {

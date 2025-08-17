@@ -40,10 +40,11 @@ struct SquareContentView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            CachedAsyncImage.withPlaceholder(
-                url: item.imageURL,
-                contentMode: .fill
-            ) {
+            AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } placeholder: {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
                     .overlay(
@@ -105,10 +106,11 @@ struct BigSquareContentView: View {
     var body: some View {
         // Image with title and episode count overlay
         ZStack(alignment: .bottomLeading) {
-            CachedAsyncImage.withPlaceholder(
-                url: item.imageURL,
-                contentMode: .fill
-            ) {
+            AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } placeholder: {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
                     .overlay(
@@ -180,10 +182,11 @@ struct TwoLinesGridContentView: View {
     var body: some View {
         HStack(spacing: 16) {
             // Left: Square thumbnail
-            CachedAsyncImage.withPlaceholder(
-                url: item.imageURL,
-                contentMode: .fill
-            ) {
+            AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } placeholder: {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
                     .overlay(
@@ -223,7 +226,7 @@ struct TwoLinesGridContentView: View {
                 // Second line with additional metadata
                 HStack(spacing: 4) {
                     if contentType == .episode {
-                        Text("قبل 5 ساعات")
+                        Text("5 hours ago")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                     } else {
@@ -280,10 +283,10 @@ struct TwoLinesGridContentView: View {
     
     private func contentTypeDisplayName() -> String {
         switch contentType {
-        case .podcast: return "بودكاست"
-        case .episode: return "حلقة"
-        case .audioBook: return "كتاب صوتي"
-        case .audioArticle: return "مقال صوتي"
+        case .podcast: return "Podcast"
+        case .episode: return "Episode"
+        case .audioBook: return "Audiobook"
+        case .audioArticle: return "Audio Article"
         case .unknown: return ""
         }
     }
@@ -296,10 +299,11 @@ struct QueueContentView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            CachedAsyncImage.withPlaceholder(
-                url: item.imageURL,
-                contentMode: .fill
-            ) {
+            AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } placeholder: {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
                     .overlay(

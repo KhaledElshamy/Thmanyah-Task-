@@ -138,10 +138,11 @@ struct TwoLinesGridItemView: View {
         Button(action: onTap) {
             HStack(alignment: .top, spacing: 12) {
                 // Left: Full height thumbnail
-                CachedAsyncImage.withPlaceholder(
-                    url: item.imageURL,
-                    contentMode: .fill
-                ) {
+                AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                } placeholder: {
                     Rectangle()
                         .fill(Color.gray.opacity(0.3))
                         .overlay(
@@ -231,10 +232,11 @@ struct CarouselSliderView: View {
                         ForEach(Array(items.enumerated().reversed()), id: \.offset) { index, item in
                             HStack {
                                 ZStack(alignment: Alignment(horizontal: .leading, vertical: .bottom)) {
-                                    CachedAsyncImage.withPlaceholder(
-                                        url: item.imageURL,
-                                        contentMode: .fill
-                                    ) {
+                                    AsyncImage(url: URL(string: item.imageURL ?? "")) { image in
+                                        image
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                    } placeholder: {
                                         Rectangle()
                                             .fill(Color.gray.opacity(0.3))
                                             .overlay(

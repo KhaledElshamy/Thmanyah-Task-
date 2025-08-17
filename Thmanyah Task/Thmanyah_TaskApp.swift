@@ -10,13 +10,22 @@ import SwiftUI
 @main
 struct Thmanyah_TaskApp: App {
     let persistenceController = PersistenceController.shared
-    @StateObject private var diContainer = AppDIContainer()
+    @StateObject private var appDIContainer = AppDIContainer()
     
     var body: some Scene {
         WindowGroup {
-            diContainer.makeHomeView()
-                .environmentObject(diContainer)
+            MainAppView()
+                .environmentObject(appDIContainer)
                 .preferredColorScheme(.dark)
         }
+    }
+}
+
+struct MainAppView: View {
+    @EnvironmentObject var appDIContainer: AppDIContainer
+    
+    var body: some View {
+        TabBarDIContainer(appDIContainer: appDIContainer)
+            .makeMainTabView()
     }
 }

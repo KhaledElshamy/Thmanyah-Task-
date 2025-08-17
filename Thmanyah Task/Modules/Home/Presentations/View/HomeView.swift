@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     @EnvironmentObject var diContainer: AppDIContainer
+    @EnvironmentObject var tabCoordinator: TabCoordinator
     
     var body: some View {
         NavigationView {
@@ -37,7 +38,7 @@ struct HomeView: View {
                     HStack {
                         Image(systemName: "waveform")
                             .foregroundColor(.accentColor)
-                        Text("ثمانيه")
+                        Text("Thmanyah")
                             .font(.title2)
                             .fontWeight(.bold)
                     }
@@ -69,6 +70,10 @@ struct HomeView: View {
                 } else if !viewModel.sections.isEmpty {
                     endOfListView
                 }
+                
+                // Bottom padding for tab bar
+                Color.clear
+                    .frame(height: 100)
             }
             .padding(.top, 16)
         }
@@ -83,17 +88,17 @@ struct HomeView: View {
                 HStack {
                     ProgressView()
                         .scaleEffect(0.8)
-                    Text("جاري تحميل المزيد...")
+                    Text("Loading more...")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
             } else if !viewModel.error.isEmpty {
                 VStack(spacing: 8) {
-                    Text("فشل في تحميل المزيد")
+                    Text("Failed to load more")
                         .font(.subheadline)
                         .foregroundColor(.red)
                     
-                    Button("إعادة المحاولة") {
+                    Button("Retry") {
                         viewModel.loadNextPage()
                     }
                     .font(.caption)
@@ -110,7 +115,7 @@ struct HomeView: View {
             Divider()
                 .padding(.horizontal)
             
-            Text("تم تحميل جميع المحتويات")
+            Text("All content loaded")
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.vertical, 16)
@@ -125,6 +130,8 @@ struct HomeView: View {
             try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 second
         }
     }
+    
+
 }
 
 // MARK: - Loading View
@@ -133,7 +140,7 @@ struct LoadingView: View {
         VStack(spacing: 16) {
             ProgressView()
                 .scaleEffect(1.5)
-            Text("جاري التحميل...")
+            Text("Loading...")
                 .font(.headline)
                 .foregroundColor(.secondary)
         }
@@ -163,7 +170,7 @@ struct ErrorView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            Button("إعادة المحاولة") {
+            Button("Retry") {
                 retryAction()
             }
             .buttonStyle(.borderedProminent)

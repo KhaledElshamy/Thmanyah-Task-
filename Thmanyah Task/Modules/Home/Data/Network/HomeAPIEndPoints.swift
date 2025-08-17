@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct APIEndPoints {
+struct HomeAPIEndPoints {
     
     static func getHomeList(with homeRequestDTO: HomeRequestDTO = HomeRequestDTO()) -> Endpoint<HomeResponseDTO> {
 
@@ -17,4 +17,6 @@ struct APIEndPoints {
             queryParametersEncodable: homeRequestDTO
         )
     }
+    
+    
 }

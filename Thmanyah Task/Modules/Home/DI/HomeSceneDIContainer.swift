@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class HomeScenesDIContainer {
 
     struct Dependencies {
@@ -15,28 +16,29 @@ final class HomeScenesDIContainer {
     
     private let dependencies: Dependencies
     
+    // MARK: - Lazy Instances
+    private lazy var homeViewModel: HomeViewModel = {
+        return HomeViewModel(homeUseCase: makeHomeUseCase())
+    }()
+    
     init(dependencies: Dependencies){
         self.dependencies = dependencies
     }
     
-    @MainActor
     func makeHomeView() -> HomeView {
         return HomeView(viewModel: self.makeHomeViewModel())
     }
     
-    @MainActor
     func makeHomeViewModel() -> HomeViewModel {
-        return HomeViewModel(homeUseCase: makeHomeUseCase())
+        return homeViewModel
     }
     
     // MARK: - Use Cases
-    @MainActor
-    private func makeHomeUseCase() -> HomeUseCaseProtocol {
+    func makeHomeUseCase() -> HomeUseCaseProtocol {
         return HomeUseCase(repository: makeHomeRepository())
     }
     
     // MARK: - Repository
-    @MainActor
     private func makeHomeRepository() -> HomeRepositoryProtocol {
         return HomeRepository(service: dependencies.apiDataTransferService)
     }

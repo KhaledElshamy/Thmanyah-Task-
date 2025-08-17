@@ -11,9 +11,6 @@ final class AppDIContainer: ObservableObject {
     
     lazy var appConfiguration = AppConfiguration()
     
-    // MARK: - Image Cache
-    lazy var imageCacheService: ImageCacheServiceProtocol = ImageCacheService.shared
-    
     // MARK: - Network
     lazy var homeApiDataTransferService: DataTransferService = {
         let config = ApiDataNetworkConfig(
@@ -32,9 +29,43 @@ final class AppDIContainer: ObservableObject {
         return DefaultDataTransferService(with: searchDataNetwork)
     }()
     
+
+    
+    // MARK: - Home Scene
+    @MainActor
+    lazy var homeScenesDIContainer: HomeScenesDIContainer = {
+        let dependencies = HomeScenesDIContainer.Dependencies(
+            apiDataTransferService: homeApiDataTransferService
+        )
+        return HomeScenesDIContainer(dependencies: dependencies)
+    }()
+    
     @MainActor
     func makeHomeView() -> HomeView {
-        let dependencies = HomeScenesDIContainer.Dependencies(apiDataTransferService: homeApiDataTransferService)
-        return HomeScenesDIContainer(dependencies: dependencies).makeHomeView()
+        return homeScenesDIContainer.makeHomeView()
+    }
+    
+    @MainActor
+    func makeHomeViewModel() -> HomeViewModel {
+        return homeScenesDIContainer.makeHomeViewModel()
+    }
+    
+    // MARK: - Search Scene
+    @MainActor
+    lazy var searchScenesDIContainer: SearchScenesDIContainer = {
+        let dependencies = SearchScenesDIContainer.Dependencies(
+            apiDataTransferService: searchDataTransferService
+        )
+        return SearchScenesDIContainer(dependencies: dependencies)
+    }()
+    
+    @MainActor
+    func makeSearchView() -> SearchView {
+        return searchScenesDIContainer.makeSearchView()
+    }
+    
+    @MainActor
+    func makeSearchViewModel() -> SearchViewModel {
+        return searchScenesDIContainer.makeSearchViewModel()
     }
 }

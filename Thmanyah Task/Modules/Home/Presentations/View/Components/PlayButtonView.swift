@@ -35,6 +35,12 @@ struct PlayButtonView: View {
     
     // MARK: - Helper Functions
     private func formatDuration(_ duration: String) -> String {
+        // First check if it's a numeric duration (like "1702" seconds)
+        if let seconds = Int(duration) {
+            return formatSecondsToHoursMinutes(seconds)
+        }
+        
+        // Otherwise, handle string format like "1hr 30min"
         let components = duration.components(separatedBy: " ")
         var result: [String] = []
         
@@ -53,6 +59,32 @@ struct PlayButtonView: View {
         }
         
         return result.isEmpty ? duration : result.joined(separator: " ")
+    }
+    
+    private func formatSecondsToHoursMinutes(_ totalSeconds: Int) -> String {
+        let hours = totalSeconds / 3600
+        let minutes = (totalSeconds % 3600) / 60
+        
+        var result: [String] = []
+        
+        if hours > 0 {
+            result.append("\(hours)h")
+        }
+        
+        if minutes > 0 {
+            result.append("\(minutes)m")
+        }
+        
+        // If both hours and minutes are 0, show seconds
+        if result.isEmpty {
+            if totalSeconds > 0 {
+                result.append("\(totalSeconds)s")
+            } else {
+                result.append("0m")
+            }
+        }
+        
+        return result.joined(separator: " ")
     }
 }
 
