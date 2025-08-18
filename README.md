@@ -636,7 +636,9 @@ func test_debug_printAllAvailableElements() throws {
 
 ## 6. Video Demonstration
 
-📹 **App Demo Video**: `Thmanyah app Record.mov`
+📹 **App Demo Video**: 
+
+https://github.com/user-attachments/assets/293371d6-d9c3-462f-ae88-a1a3b80a4f1d
 
 The demonstration video located on the desktop shows:
 - ✅ **Complete app navigation** through all tab sections
